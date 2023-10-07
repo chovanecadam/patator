@@ -2237,6 +2237,8 @@ Please read the README inside for more examples and usage information.
         if not i:
           return None
         command = i[0].readline().strip()
+        if command == '':
+          command = '<Enter>'
 
       return command
 
@@ -2295,7 +2297,7 @@ Please read the README inside for more examples and usage information.
       except ValueError:
         logger.warn('usage: x actions:conditions')
 
-    else: # show progress
+    elif command == '<Enter>': # show progress
 
       thread_progress = self.thread_progress
       num_threads = self.num_threads
