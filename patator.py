@@ -99,7 +99,7 @@ FEATURES
       + not limited to brute-forcing (eg. remote exploit testing, or vulnerable version probing)
 
   * Interactive runtime
-      + show progress during execution (press Enter)
+      + show progress during execution (press s)
       + pause/unpause execution (press p)
       + increase/decrease verbosity
       + add new actions & conditions during runtime (eg. to exclude more types of response from showing)
@@ -2242,7 +2242,7 @@ Please read the README inside for more examples and usage information.
 
     command = read_command()
 
-    if command is None:
+    if command is None or command == '':
       if self.auto_progress == 0:
         return
 
@@ -2263,7 +2263,7 @@ Please read the README inside for more examples and usage information.
     if command == 'h':
       logger.info('''Available commands:
        h       show help
-       <Enter> show progress
+       s       show progress
        d/D     increase/decrease debug level
        p       pause progress
        f       show verbose progress
@@ -2295,7 +2295,7 @@ Please read the README inside for more examples and usage information.
       except ValueError:
         logger.warn('usage: x actions:conditions')
 
-    else: # show progress
+    elif command == "s": # show progress
 
       thread_progress = self.thread_progress
       num_threads = self.num_threads
